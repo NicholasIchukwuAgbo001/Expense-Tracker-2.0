@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ClerkThemeProvider from '../components/ClerkThemeProvder';
-import Navbar from '../components/NavBar'
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ExpenseTracker AI - Smart Financial Management',
+  title: 'ExpenseTracker, Smart Financial Management',
   description:
     'AI-powered expense tracking app with intelligent insights, smart categorization, and personalized financial recommendations',
 };
