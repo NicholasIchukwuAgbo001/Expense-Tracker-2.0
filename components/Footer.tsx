@@ -64,7 +64,7 @@ const Footer = () => {
                 <div className='w-5 h-5 bg-gradient-to-br from-emerald-500 to-green-500 rounded-md flex items-center justify-center shadow-sm'>
                   <span className='text-white text-xs'>🤖</span>
                 </div>
-                AI-Powered Insights
+                Niko-Powered Insights
               </div>
               <div className='flex items-center gap-3 text-gray-600 dark:text-gray-400 text-sm'>
                 <div className='w-5 h-5 bg-gradient-to-br from-green-500 to-teal-500 rounded-md flex items-center justify-center shadow-sm'>
