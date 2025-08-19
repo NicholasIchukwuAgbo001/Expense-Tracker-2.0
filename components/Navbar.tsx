@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav className='sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-600/50 shadow-lg shadow-gray-900/5 dark:shadow-black/30'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-14 sm:h-16'>
-          {/* Logo Section */}
+
           <div className='flex items-center'>
             <Link
               href='/'
@@ -40,7 +40,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation Links */}
           <div className='hidden md:flex items-center space-x-1'>
             <Link
               href='/'
@@ -67,14 +66,11 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right Section */}
           <div className='flex items-center space-x-1 sm:space-x-2'>
-            {/* Theme Toggle */}
             <div className='p-0.5 sm:p-1'>
               <ThemeToggle />
             </div>
 
-            {/* Authentication - Desktop */}
             <div className='hidden sm:block'>
               <SignedOut>
                 <SignInButton>
@@ -115,7 +111,6 @@ export default function Navbar() {
               </SignedIn>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
               className='md:hidden p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-all duration-200 active:scale-95'
@@ -149,7 +144,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`md:hidden transition-all duration-300 ease-in-out ${
             isMobileMenuOpen
@@ -158,7 +152,6 @@ export default function Navbar() {
           }`}
         >
           <div className='px-2 pt-2 pb-3 space-y-1 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-600/50 mt-2 shadow-lg'>
-            {/* Mobile Navigation Links */}
             <Link
               href='/'
               className='flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 text-sm font-medium transition-all duration-200 active:scale-95'
@@ -184,7 +177,6 @@ export default function Navbar() {
               <span>Contact</span>
             </Link>
 
-            {/* Mobile Authentication */}
             <div className='pt-3 border-t border-gray-200/50 dark:border-gray-600/50'>
               <SignedOut>
                 <SignInButton>
