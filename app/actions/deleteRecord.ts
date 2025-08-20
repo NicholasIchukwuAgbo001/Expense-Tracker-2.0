@@ -25,7 +25,7 @@ async function deleteRecord(recordId: string): Promise<{
 
     return { message: 'Record deleted' };
   } catch (error) {
-    console.error('Error deleting record:', error); // Log the error
+    console.error('Error deleting record:', error);
     return { error: 'Database error' };
   }
 }

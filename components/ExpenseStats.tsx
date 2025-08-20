@@ -4,7 +4,6 @@ import getBestWorstExpense from '@/app/actions/getBestWorstExpense';
 
 const ExpenseStats = async () => {
   try {
-    // Fetch both average and range data
     const [userRecordResult, rangeResult] = await Promise.all([
       getUserRecord(),
       getBestWorstExpense(),
@@ -13,7 +12,6 @@ const ExpenseStats = async () => {
     const { record, daysWithRecords } = userRecordResult;
     const { bestExpense, worstExpense } = rangeResult;
 
-    // Calculate average expense
     const validRecord = record || 0;
     const validDays =
       daysWithRecords && daysWithRecords > 0 ? daysWithRecords : 1;
@@ -36,7 +34,7 @@ const ExpenseStats = async () => {
         </div>
 
         <div className='space-y-3 sm:space-y-4'>
-          {/* Average Daily Spending */}
+         
           <div className='bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-3 sm:p-4 border border-gray-200/50 dark:border-gray-600/50'>
             <div className='text-center'>
               <p className='text-xs font-medium text-gray-600 dark:text-gray-300 mb-2 tracking-wide uppercase'>
@@ -52,9 +50,8 @@ const ExpenseStats = async () => {
             </div>
           </div>
 
-          {/* Expense Range */}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3'>
-            {/* Highest Expense */}
+          
             <div className='bg-red-50/80 dark:bg-red-900/20 backdrop-blur-sm p-3 sm:p-4 rounded-xl border-l-4 border-l-red-500 hover:bg-red-50 dark:hover:bg-red-900/30'>
               <div className='flex items-center gap-2'>
                 <div className='w-6 h-6 bg-red-100 dark:bg-red-800 rounded-xl flex items-center justify-center flex-shrink-0'>
@@ -73,7 +70,6 @@ const ExpenseStats = async () => {
               </div>
             </div>
 
-            {/* Lowest Expense */}
             <div className='bg-green-50/80 dark:bg-green-900/20 backdrop-blur-sm p-3 sm:p-4 rounded-xl border-l-4 border-l-green-500 hover:bg-green-50 dark:hover:bg-green-900/30'>
               <div className='flex items-center gap-2'>
                 <div className='w-6 h-6 bg-green-100 dark:bg-green-800 rounded-xl flex items-center justify-center flex-shrink-0'>

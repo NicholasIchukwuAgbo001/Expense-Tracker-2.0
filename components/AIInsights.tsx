@@ -33,7 +33,6 @@ const AIInsights = () => {
       setLastUpdated(new Date());
     } catch (error) {
       console.error('❌ AIInsights: Failed to load AI insights:', error);
-      // Fallback to mock data if AI fails
       setInsights([
         {
           id: 'fallback-1',
@@ -52,15 +51,12 @@ const AIInsights = () => {
   const handleActionClick = async (insight: InsightData) => {
     if (!insight.action) return;
 
-    // Check if answer is already loading or exists
     const existingAnswer = aiAnswers.find((a) => a.insightId === insight.id);
     if (existingAnswer) {
-      // Remove the answer if it already exists (toggle functionality)
       setAiAnswers((prev) => prev.filter((a) => a.insightId !== insight.id));
       return;
     }
 
-    // Add loading state
     setAiAnswers((prev) => [
       ...prev,
       {
@@ -71,10 +67,7 @@ const AIInsights = () => {
     ]);
 
     try {
-      // Generate question based on insight title and action
       const question = `${insight.title}: ${insight.action}`;
-
-      // Use server action to generate AI answer
       const answer = await generateInsightAnswer(question);
 
       setAiAnswers((prev) =>
@@ -319,8 +312,7 @@ const AIInsights = () => {
                       </span>
                     </div>
                   )}
-
-                  {/* AI Answer Display */}
+                  
                   {currentAnswer && (
                     <div className='mt-3 p-3 bg-white/70 dark:bg-gray-700/70 backdrop-blur-sm rounded-lg border border-gray-200 dark:border-gray-600'>
                       <div className='flex items-start gap-2'>

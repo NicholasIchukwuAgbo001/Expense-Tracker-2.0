@@ -5,36 +5,36 @@ import { suggestCategory } from '@/app/actions/suggestCategory';
 
 const AddRecord = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [amount, setAmount] = useState(50); // Default value for expense amount
-  const [alertMessage, setAlertMessage] = useState<string | null>(null); // State for alert message
-  const [alertType, setAlertType] = useState<'success' | 'error' | null>(null); // State for alert type
-  const [isLoading, setIsLoading] = useState(false); // State for loading spinner
-  const [category, setCategory] = useState(''); // State for selected expense category
-  const [description, setDescription] = useState(''); // State for expense description
-  const [isCategorizingAI, setIsCategorizingAI] = useState(false); // State for AI categorization loading
+  const [amount, setAmount] = useState(50); 
+  const [alertMessage, setAlertMessage] = useState<string | null>(null); 
+  const [alertType, setAlertType] = useState<'success' | 'error' | null>(null); 
+  const [isLoading, setIsLoading] = useState(false); 
+  const [category, setCategory] = useState(''); 
+  const [description, setDescription] = useState(''); 
+  const [isCategorizingAI, setIsCategorizingAI] = useState(false); 
 
   const clientAction = async (formData: FormData) => {
-    setIsLoading(true); // Show spinner
-    setAlertMessage(null); // Clear previous messages
+    setIsLoading(true); 
+    setAlertMessage(null); 
 
-    formData.set('amount', amount.toString()); // Add the amount value to the form data
-    formData.set('category', category); // Add the selected category to the form data
+    formData.set('amount', amount.toString());
+    formData.set('category', category); 
 
-    const { error } = await addExpenseRecord(formData); // Removed `data` since it's unused
+    const { error } = await addExpenseRecord(formData); 
 
     if (error) {
       setAlertMessage(`Error: ${error}`);
-      setAlertType('error'); // Set alert type to error
+      setAlertType('error');
     } else {
       setAlertMessage('Expense record added successfully!');
-      setAlertType('success'); // Set alert type to success
+      setAlertType('success'); 
       formRef.current?.reset();
-      setAmount(50); // Reset the amount to the default value
-      setCategory(''); // Reset the category
-      setDescription(''); // Reset the description
+      setAmount(50); 
+      setCategory('');
+      setDescription('');
     }
 
-    setIsLoading(false); // Hide spinner
+    setIsLoading(false); 
   };
 
   const handleAISuggestCategory = async () => {
@@ -89,9 +89,8 @@ const AddRecord = () => {
         }}
         className='space-y-6 sm:space-y-8'
       >
-        {/* Expense Description and Date */}
+
         <div className='grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4 bg-gradient-to-r from-emerald-50/50 to-green-50/50 dark:from-emerald-900/10 dark:to-green-900/10 rounded-xl border border-emerald-100/50 dark:border-emerald-800/50'>
-          {/* Expense Description */}
           <div className='space-y-1.5'>
             <label
               htmlFor='text'
@@ -133,7 +132,6 @@ const AddRecord = () => {
             )}
           </div>
 
-          {/* Expense Date */}
           <div className='space-y-1.5'>
             <label
               htmlFor='date'
@@ -153,9 +151,7 @@ const AddRecord = () => {
           </div>
         </div>
 
-        {/* Category Selection and Amount */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4 bg-gradient-to-r from-green-50/50 to-emerald-50/50 dark:from-green-900/10 dark:to-emerald-900/10 rounded-xl border border-green-100/50 dark:border-green-800/50'>
-          {/* Category Selection */}
           <div className='space-y-1.5'>
             <label
               htmlFor='category'
@@ -257,7 +253,6 @@ const AddRecord = () => {
           </div>
         </div>
 
-        {/* Submit Button */}
         <button
           type='submit'
           className='w-full relative overflow-hidden bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 hover:from-emerald-700 hover:via-green-600 hover:to-teal-600 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl group transition-all duration-300 border-2 border-transparent hover:border-white/20 text-sm sm:text-base'
@@ -279,7 +274,6 @@ const AddRecord = () => {
         </button>
       </form>
 
-      {/* Alert Message */}
       {alertMessage && (
         <div
           className={`mt-4 p-3 rounded-xl border-l-4 backdrop-blur-sm ${

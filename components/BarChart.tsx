@@ -13,7 +13,6 @@ import {
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState, useEffect } from 'react';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,23 +22,20 @@ ChartJS.register(
   Legend
 );
 
-// Define the type for a record
 interface Record {
-  date: string; // ISO date string
-  amount: number; // Amount spent
-  category: string; // Expense category
+  date: string;
+  amount: number; 
+  category: string;
 }
 
 const BarChart = ({ records }: { records: Record[] }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const [windowWidth, setWindowWidth] = useState(1024); // Default to desktop width
+  const [windowWidth, setWindowWidth] = useState(1024); 
 
   useEffect(() => {
-    // Set initial window width
     setWindowWidth(window.innerWidth);
 
-    // Add resize listener
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
@@ -50,7 +46,6 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   const isMobile = windowWidth < 640;
 
-  // Aggregate expenses by date
   const aggregateByDate = (records: Record[]) => {
     const dateMap = new Map<
       string,
@@ -58,9 +53,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
     >();
 
     records.forEach((record) => {
-      // Parse the date string properly and extract just the date part (YYYY-MM-DD)
       const dateObj = new Date(record.date);
-      // Use UTC methods to avoid timezone issues
       const year = dateObj.getUTCFullYear();
       const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0');
       const day = String(dateObj.getUTCDate()).padStart(2, '0');
@@ -76,12 +69,11 @@ const BarChart = ({ records }: { records: Record[] }) => {
         dateMap.set(dateKey, {
           total: record.amount,
           categories: [record.category],
-          originalDate: record.date, // Keep original ISO date for sorting
+          originalDate: record.date, 
         });
       }
     });
 
-    // Convert to array and sort by date (oldest to newest)
     return Array.from(dateMap.entries())
       .map(([date, data]) => ({
         date,
@@ -98,33 +90,30 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   const aggregatedData = aggregateByDate(records);
 
-  // Get color based on amount (since we're aggregating multiple categories)
   const getAmountColor = (amount: number) => {
     if (amount > 200)
       return {
         bg: isDark ? 'rgba(255, 99, 132, 0.3)' : 'rgba(255, 99, 132, 0.2)',
         border: isDark ? 'rgba(255, 99, 132, 0.8)' : 'rgba(255, 99, 132, 1)',
-      }; // Red for high spending
+      }; 
     if (amount > 100)
       return {
         bg: isDark ? 'rgba(255, 206, 86, 0.3)' : 'rgba(255, 206, 86, 0.2)',
         border: isDark ? 'rgba(255, 206, 86, 0.8)' : 'rgba(255, 206, 86, 1)',
-      }; // Yellow for medium spending
+      }; 
     if (amount > 50)
       return {
         bg: isDark ? 'rgba(54, 162, 235, 0.3)' : 'rgba(54, 162, 235, 0.2)',
         border: isDark ? 'rgba(54, 162, 235, 0.8)' : 'rgba(54, 162, 235, 1)',
-      }; // Blue for moderate spending
+      }; 
     return {
       bg: isDark ? 'rgba(75, 192, 192, 0.3)' : 'rgba(75, 192, 192, 0.2)',
       border: isDark ? 'rgba(75, 192, 192, 0.8)' : 'rgba(75, 192, 192, 1)',
-    }; // Green for low spending
+    };
   };
 
-  // Prepare data for the chart
   const data = {
     labels: aggregatedData.map((item) => {
-      // Format date as MM/DD for better readability
       const [, month, day] = item.date.split('-');
       return `${month}/${day}`;
     }),
@@ -138,20 +127,20 @@ const BarChart = ({ records }: { records: Record[] }) => {
           (item) => getAmountColor(item.amount).border
         ),
         borderWidth: 1,
-        borderRadius: 2, // Rounded bar edges
+        borderRadius: 2, 
       },
     ],
   };
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // Allow flexible height
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false, // Remove legend
+        display: false,
       },
       title: {
-        display: false, // Remove chart title
+        display: false, 
       },
       tooltip: {
         backgroundColor: isDark
@@ -190,12 +179,12 @@ const BarChart = ({ records }: { records: Record[] }) => {
           font: {
             size: isMobile ? 10 : 12,
           },
-          color: isDark ? '#9ca3af' : '#7f8c8d', // Gray x-axis labels
-          maxRotation: isMobile ? 45 : 0, // Rotate labels on mobile
+          color: isDark ? '#9ca3af' : '#7f8c8d', 
+          maxRotation: isMobile ? 45 : 0, 
           minRotation: isMobile ? 45 : 0,
         },
         grid: {
-          display: false, // Hide x-axis grid lines
+          display: false, 
         },
       },
       y: {
@@ -203,24 +192,24 @@ const BarChart = ({ records }: { records: Record[] }) => {
           display: true,
           text: 'Amount ($)',
           font: {
-            size: isMobile ? 12 : 16, // Smaller font on mobile
+            size: isMobile ? 12 : 16, 
             weight: 'bold' as const,
           },
           color: isDark ? '#d1d5db' : '#2c3e50',
         },
         ticks: {
           font: {
-            size: isMobile ? 10 : 12, // Smaller font on mobile
+            size: isMobile ? 10 : 12, 
           },
-          color: isDark ? '#9ca3af' : '#7f8c8d', // Gray y-axis labels
+          color: isDark ? '#9ca3af' : '#7f8c8d', 
           callback: function (value: string | number) {
-            return '$' + value; // Add dollar sign to y-axis labels
+            return '$' + value; 
           },
         },
         grid: {
-          color: isDark ? '#374151' : '#e0e0e0', // Dark mode grid lines
+          color: isDark ? '#374151' : '#e0e0e0', 
         },
-        beginAtZero: true, // Start y-axis at zero for expenses
+        beginAtZero: true, 
       },
     },
   };

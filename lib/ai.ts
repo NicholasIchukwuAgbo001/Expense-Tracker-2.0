@@ -38,7 +38,6 @@ export async function generateExpenseInsights(
   expenses: ExpenseRecord[]
 ): Promise<AIInsight[]> {
   try {
-    // Prepare expense data for AI analysis
     const expensesSummary = expenses.map((expense) => ({
       amount: expense.amount,
       category: expense.category,
@@ -89,7 +88,6 @@ export async function generateExpenseInsights(
       throw new Error('No response from AI');
     }
 
-    // Clean the response by removing markdown code blocks if present
     let cleanedResponse = response.trim();
     if (cleanedResponse.startsWith('```json')) {
       cleanedResponse = cleanedResponse
@@ -101,10 +99,8 @@ export async function generateExpenseInsights(
         .replace(/\s*```$/, '');
     }
 
-    // Parse AI response
     const insights = JSON.parse(cleanedResponse);
 
-    // Add IDs and ensure proper format
     const formattedInsights = insights.map(
       (insight: RawInsight, index: number) => ({
         id: `ai-${Date.now()}-${index}`,
@@ -120,7 +116,6 @@ export async function generateExpenseInsights(
   } catch (error) {
     console.error('❌ Error generating AI insights:', error);
 
-    // Fallback to mock insights if AI fails
     return [
       {
         id: 'fallback-1',

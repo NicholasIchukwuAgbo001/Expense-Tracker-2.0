@@ -17,14 +17,14 @@ async function getRecords(): Promise<{
     const records = await db.record.findMany({
       where: { userId },
       orderBy: {
-        date: 'desc', // Sort by the `date` field in descending order
+        date: 'desc', 
       },
-      take: 10, // Limit the request to 10 records
+      take: 10, 
     });
 
     return { records };
   } catch (error) {
-    console.error('Error fetching records:', error); // Log the error
+    console.error('Error fetching records:', error); 
     return { error: 'Database error' };
   }
 }
