@@ -7,9 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-10 lg:px-8">
-        {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
-          {/* Brand */}
           <div>
             <h3 className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
               ExpenseTracker
@@ -20,7 +18,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
               Quick Links
@@ -61,7 +58,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
               Resources
@@ -94,7 +90,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
               Stay Updated
@@ -118,15 +113,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
+ 
         <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left justify-center md:justify-between">
-            {/* Left */}
+
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               © {new Date().getFullYear()} ExpenseTracker. All rights reserved.
             </p>
 
-            {/* Social */}
             <div className="flex items-center gap-5 text-gray-600 dark:text-gray-400 text-xl">
               <Link
                 href="https://github.com/NicholasIchukwuAgbo001"
@@ -151,7 +145,6 @@ export default function Footer() {
               </Link>
             </div>
 
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-emerald-50/80 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
               <span className="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-ping"></span>
               Made by Nicholas
