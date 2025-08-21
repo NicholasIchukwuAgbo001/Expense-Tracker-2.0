@@ -2,6 +2,12 @@ import React from 'react';
 import getUserRecord from '@/app/actions/getUserRecord';
 import getBestWorstExpense from '@/app/actions/getBestWorstExpense';
 
+const formatter = new Intl.NumberFormat('en-NG', {
+  style: 'currency',
+  currency: 'NGN',
+  minimumFractionDigits: 2,
+});
+
 const ExpenseStats = async () => {
   try {
     const [userRecordResult, rangeResult] = await Promise.all([
@@ -34,14 +40,14 @@ const ExpenseStats = async () => {
         </div>
 
         <div className='space-y-3 sm:space-y-4'>
-         
+          {/* Average Daily Spending */}
           <div className='bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-3 sm:p-4 border border-gray-200/50 dark:border-gray-600/50'>
             <div className='text-center'>
               <p className='text-xs font-medium text-gray-600 dark:text-gray-300 mb-2 tracking-wide uppercase'>
                 Average Daily Spending
               </p>
               <div className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2'>
-                ${averageExpense.toFixed(2)}
+                {formatter.format(averageExpense)}
               </div>
               <div className='inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-full text-xs font-medium'>
                 <span className='w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full'></span>
@@ -50,8 +56,9 @@ const ExpenseStats = async () => {
             </div>
           </div>
 
+          {/* Highest & Lowest */}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3'>
-          
+            {/* Highest */}
             <div className='bg-red-50/80 dark:bg-red-900/20 backdrop-blur-sm p-3 sm:p-4 rounded-xl border-l-4 border-l-red-500 hover:bg-red-50 dark:hover:bg-red-900/30'>
               <div className='flex items-center gap-2'>
                 <div className='w-6 h-6 bg-red-100 dark:bg-red-800 rounded-xl flex items-center justify-center flex-shrink-0'>
@@ -64,12 +71,15 @@ const ExpenseStats = async () => {
                     Highest
                   </h4>
                   <p className='text-lg font-bold text-red-600 dark:text-red-300'>
-                    {bestExpense !== undefined ? `$${bestExpense}` : 'No data'}
+                    {bestExpense !== undefined
+                      ? formatter.format(bestExpense)
+                      : 'No data'}
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* Lowest */}
             <div className='bg-green-50/80 dark:bg-green-900/20 backdrop-blur-sm p-3 sm:p-4 rounded-xl border-l-4 border-l-green-500 hover:bg-green-50 dark:hover:bg-green-900/30'>
               <div className='flex items-center gap-2'>
                 <div className='w-6 h-6 bg-green-100 dark:bg-green-800 rounded-xl flex items-center justify-center flex-shrink-0'>
@@ -83,7 +93,7 @@ const ExpenseStats = async () => {
                   </h4>
                   <p className='text-lg font-bold text-green-600 dark:text-green-300'>
                     {worstExpense !== undefined
-                      ? `$${worstExpense}`
+                      ? formatter.format(worstExpense)
                       : 'No data'}
                   </p>
                 </div>

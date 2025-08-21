@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 
 interface RecordData {
   text: string;
-  amount: number;
+  amount: string; // formatted amount instead of number
   category: string;
   date: string; 
 }
@@ -67,9 +67,15 @@ async function addExpenseRecord(formData: FormData): Promise<RecordResult> {
       },
     });
 
+    // format amount as Naira currency
+    const formattedAmount = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+    }).format(createdRecord.amount);
+
     const recordData: RecordData = {
       text: createdRecord.text,
-      amount: createdRecord.amount,
+      amount: formattedAmount, // return formatted string
       category: createdRecord.category,
       date: createdRecord.date?.toISOString() || date,
     };

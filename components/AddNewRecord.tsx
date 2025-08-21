@@ -229,19 +229,19 @@ const AddRecord = () => {
               <span className='w-1.5 h-1.5 bg-green-500 rounded-full'></span>
               Amount
               <span className='text-xs text-gray-400 dark:text-gray-500 ml-2 font-normal hidden sm:inline'>
-                Enter amount between $0 and $1,000
+                Enter amount between ₦0 and ₦1,000,000
               </span>
             </label>
             <div className='relative'>
               <span className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 font-medium text-sm'>
-                $
+                ₦
               </span>
               <input
                 type='number'
                 name='amount'
                 id='amount'
                 min='0'
-                max='1000'
+                max='1000000'
                 step='0.01'
                 value={amount}
                 onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}

@@ -1,4 +1,5 @@
 'use server';
+
 import { db } from '@/lib/db';
 import { auth } from '@clerk/nextjs/server';
 import { Record } from '@/types/Record';
@@ -17,14 +18,15 @@ async function getRecords(): Promise<{
     const records = await db.record.findMany({
       where: { userId },
       orderBy: {
-        date: 'desc', 
+        createdAt: 'desc', // ✅ Prisma typically uses `createdAt` instead of `date`
       },
-      take: 10, 
+      take: 10,
     });
 
-    return { records };
+    // Cast to your custom `Record` type if needed
+    return { records: records as Record[] };
   } catch (error) {
-    console.error('Error fetching records:', error); 
+    console.error('Error fetching records:', error);
     return { error: 'Database error' };
   }
 }

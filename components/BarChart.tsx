@@ -46,6 +46,14 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   const isMobile = windowWidth < 640;
 
+  // format to Naira
+  const formatNaira = (value: number) =>
+    new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      minimumFractionDigits: 2,
+    }).format(value);
+
   const aggregateByDate = (records: Record[]) => {
     const dateMap = new Map<
       string,
@@ -159,7 +167,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
               item.categories.length > 1
                 ? `Categories: ${item.categories.join(', ')}`
                 : `Category: ${item.categories[0]}`;
-            return [`Total: $${item.amount.toFixed(2)}`, categoriesText];
+            return [`Total: ${formatNaira(item.amount)}`, categoriesText];
           },
         },
       },
@@ -190,7 +198,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
       y: {
         title: {
           display: true,
-          text: 'Amount ($)',
+          text: 'Amount (₦)',
           font: {
             size: isMobile ? 12 : 16, 
             weight: 'bold' as const,
@@ -203,7 +211,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
           },
           color: isDark ? '#9ca3af' : '#7f8c8d', 
           callback: function (value: string | number) {
-            return '$' + value; 
+            return formatNaira(Number(value));
           },
         },
         grid: {
