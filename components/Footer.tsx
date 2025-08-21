@@ -6,7 +6,7 @@ import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 py-10 lg:px-8">
+      <div className="max-w-8xl mx-auto px-6 py-10 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           <div>
             <h3 className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
