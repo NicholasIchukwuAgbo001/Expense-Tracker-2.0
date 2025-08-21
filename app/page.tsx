@@ -1,4 +1,3 @@
-
 import AddNewRecord from '@/components/AddNewRecord';
 import AIInsights from '@/components/AIInsights';
 import ExpenseStats from '@/components/ExpenseStats';
@@ -14,13 +13,9 @@ export default async function HomePage() {
   }
   return (
     <main className='bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans min-h-screen transition-colors duration-300'>
-      {/* Mobile-optimized container with responsive padding */}
       <div className='max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-6 lg:py-8'>
-        {/* Mobile-first responsive grid */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
-          {/* Left Column - Stacked on mobile */}
           <div className='space-y-4 sm:space-y-6'>
-            {/* Welcome section with improved mobile layout */}
             <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6'>
              
               <div className='relative flex-shrink-0'>

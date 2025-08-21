@@ -22,7 +22,6 @@ export default function Navbar() {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-14 sm:h-16'>
           
-          {/* Logo */}
           <div className='flex items-center'>
             <Link
               href='/'
@@ -39,7 +38,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Links */}
           <div className='hidden md:flex items-center space-x-1'>
             <Link
               href='/'
@@ -72,7 +70,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right Section */}
           <div className='flex items-center space-x-1 sm:space-x-2'>
             <div className='p-0.5 sm:p-1'>
               <ThemeToggle />
@@ -106,7 +103,6 @@ export default function Navbar() {
               </SignedIn>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
               className='md:hidden p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-all duration-200 active:scale-95'
@@ -121,7 +117,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`md:hidden transition-all duration-300 ease-in-out ${
             isMobileMenuOpen

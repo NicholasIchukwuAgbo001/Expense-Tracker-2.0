@@ -46,7 +46,6 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   const isMobile = windowWidth < 640;
 
-  // format to Naira
   const formatNaira = (value: number) =>
     new Intl.NumberFormat('en-NG', {
       style: 'currency',

@@ -18,12 +18,11 @@ async function getRecords(): Promise<{
     const records = await db.record.findMany({
       where: { userId },
       orderBy: {
-        createdAt: 'desc', // ✅ Prisma typically uses `createdAt` instead of `date`
+        createdAt: 'desc', 
       },
       take: 10,
     });
 
-    // Cast to your custom `Record` type if needed
     return { records: records as Record[] };
   } catch (error) {
     console.error('Error fetching records:', error);

@@ -15,7 +15,6 @@ async function deleteRecord(recordId: string): Promise<{
   }
 
   try {
-    // Fetch the record before deleting
     const record = await db.record.findUnique({
       where: {
         id: recordId,
@@ -27,14 +26,12 @@ async function deleteRecord(recordId: string): Promise<{
       return { error: 'Record not found' };
     }
 
-    // Delete the record
     await db.record.delete({
       where: { id: recordId },
     });
 
     revalidatePath('/');
 
-    // Format amount in naira
     const nairaFormatted = new Intl.NumberFormat('en-NG', {
       style: 'currency',
       currency: 'NGN',

@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Clock, HelpCircle } from 'lucide-react';
 const ContactPage = () => {
   return (
     <div className='font-sans bg-gradient-to-br from-gray-50 via-white to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900/20 text-gray-800 dark:text-gray-200 transition-all duration-300 min-h-screen'>
-      {/* HERO */}
+
       <section className='relative overflow-hidden flex flex-col items-center justify-center text-center py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-emerald-500/10 via-green-500/5 to-teal-500/10 dark:from-emerald-900/30 dark:via-green-900/20 dark:to-teal-900/30'>
         <div className='absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10'></div>
         <div className='relative z-10 max-w-4xl mx-auto w-full'>
@@ -44,7 +44,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* CONTACT CARDS */}
       <section className='py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm relative overflow-hidden'>
         <div className='absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'></div>
         <div className='max-w-6xl mx-auto'>
@@ -62,7 +61,6 @@ const ContactPage = () => {
           </div>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
-            {/* Email Card */}
             <div className='group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 text-center'>
               <Mail className='w-10 h-10 sm:w-12 sm:h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4 sm:mb-6' />
               <h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-gray-100'>
@@ -79,7 +77,6 @@ const ContactPage = () => {
               </a>
             </div>
 
-            {/* Phone Card */}
             <div className='group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 text-center'>
               <Phone className='w-10 h-10 sm:w-12 sm:h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4 sm:mb-6' />
               <h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-gray-100'>
@@ -96,7 +93,6 @@ const ContactPage = () => {
               </a>
             </div>
 
-            {/* Location Card */}
             <div className='group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 text-center sm:col-span-2 lg:col-span-1'>
               <MapPin className='w-10 h-10 sm:w-12 sm:h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4 sm:mb-6' />
               <h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-gray-100'>
@@ -115,10 +111,8 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Support Info */}
       <section className='py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-gray-50 via-white to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900/20'>
         <div className='max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8'>
-          {/* Support Hours */}
           <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100/50 dark:border-gray-700/50'>
             <div className='flex items-center gap-3 mb-4'>
               <Clock className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
@@ -142,7 +136,6 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Quick Help */}
           <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100/50 dark:border-gray-700/50'>
             <div className='flex items-center gap-3 mb-4'>
               <HelpCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />

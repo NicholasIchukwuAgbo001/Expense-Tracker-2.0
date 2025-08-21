@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Record } from '@/types/Record';
 import deleteRecord from '@/app/actions/deleteRecord';
 
-// Helper function to get category emoji
 const getCategoryEmoji = (category: string) => {
   switch (category) {
     case 'Food':
@@ -23,7 +22,6 @@ const getCategoryEmoji = (category: string) => {
   }
 };
 
-// Helper to format in Nigerian Naira
 const formatToNaira = (amount: number) => {
   return new Intl.NumberFormat('en-NG', {
     style: 'currency',
@@ -42,9 +40,9 @@ const RecordItem = ({ record }: { record: Record }) => {
   };
 
   const getBorderColor = (amount: number) => {
-    if (amount > 10000) return 'border-red-500'; // High expense (Naira)
-    if (amount > 5000) return 'border-yellow-500'; // Medium expense
-    return 'border-green-500'; // Low expense
+    if (amount > 10000) return 'border-red-500'; 
+    if (amount > 5000) return 'border-yellow-500';
+    return 'border-green-500'; 
   };
 
   return (
@@ -53,7 +51,7 @@ const RecordItem = ({ record }: { record: Record }) => {
         record?.amount
       )} hover:bg-white/80 dark:hover:bg-gray-700/80 relative min-h-[120px] sm:min-h-[140px] flex flex-col justify-between overflow-visible group`}
     >
-      {/* Delete button */}
+
       <button
         onClick={() => handleDeleteRecord(record.id)}
         className={`absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-full w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center shadow-lg hover:shadow-xl border-2 border-white dark:border-gray-700 backdrop-blur-sm transform hover:scale-110 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 ${
@@ -83,7 +81,6 @@ const RecordItem = ({ record }: { record: Record }) => {
         )}
       </button>
 
-      {/* Content */}
       <div className='flex-1 flex flex-col justify-between'>
         <div className='space-y-2 sm:space-y-3'>
           <div className='flex items-center justify-between'>

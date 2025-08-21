@@ -220,7 +220,6 @@ const AddRecord = () => {
             </select>
           </div>
 
-          {/* Amount */}
           <div className='space-y-1.5'>
             <label
               htmlFor='amount'
